@@ -11,12 +11,12 @@ class HomePage extends React.Component {
 
   renderPeople = () => {
     let { data } = this.props.people
-    data.map(({ first_name, last_name, email_address, title }) => {
+    return data.map(({ first_name, last_name, email_address, title }) => {
       return (
         <li>
-          <p>Name: `${first_name} ${last_name}`</p>
-          <p>Title: `${title}`</p>
-          <p>Email: `${email_address}`</p>
+          <p>Name: {first_name} {last_name}</p>
+          <p>Title: {title}</p>
+          <p>Email: {email_address}</p>
         </li>
       )
     })
@@ -28,15 +28,7 @@ class HomePage extends React.Component {
         <h1>Home Page</h1>
         {this.props.people.data && (
           <ul>
-            {this.props.people.data.map(({ first_name, last_name, email_address, title }) => {
-              return (
-                <li>
-                  <p>Name: {first_name} {last_name}</p>
-                  <p>Title: {title}</p>
-                  <p>Email: {email_address}</p>
-                </li>
-              )
-            })}
+            {this.renderPeople()}
           </ul>
         )}
       </div>

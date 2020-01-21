@@ -1,4 +1,4 @@
-import { SET_PEOPLE } from '../constants'
+import { SET_PEOPLE, CLEAR_PEOPLE } from '../constants'
 import { fetchPeople } from '../../utils/routes'
 
 export const setPeople = (people) => ({
@@ -17,3 +17,7 @@ export const startSetPeople = () => {
       })
   }
 }
+
+export const clearPeople = () => ({
+  type: CLEAR_PEOPLE
+})

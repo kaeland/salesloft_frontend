@@ -6,11 +6,6 @@ export const login = (user) => ({
   user
 })
 
-export const error = (message) => ({
-  type: ERROR,
-  message
-})
-
 export const startLogin = (user = {}, history) => {
   return dispatch => {
     loginFetch(user)
@@ -26,3 +21,12 @@ export const startLogin = (user = {}, history) => {
       })
   }
 }
+
+export const error = (message) => ({
+  type: ERROR,
+  message
+})
+
+export const signout = () => ({
+  type: SIGN_OUT
+})

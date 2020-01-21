@@ -13,7 +13,7 @@ class HomePage extends React.Component {
     return (
       <div>
         <h1>Home Page</h1>
-        {this.props.people && <p>People data...</p>}
+        {this.props.people.data && <p>People data...</p>}
       </div>
     )
   }

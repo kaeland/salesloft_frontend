@@ -1,9 +1,28 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { signout } from '../redux/actions/auth'
+import { clearPeople } from '../redux/actions/people'
 
 const Navbar = (props) => (
-  <button onClick={() => props.history.push("/login")}>
-    Login
-  </button>
+  <div>
+  { localStorage.getItem("jwt") !== null 
+    ? (
+      <button onClick={() => handSignOut(props)}>
+        Logout
+      </button>
+    ) : (
+      <button onClick={() => props.history.push("/login")}>
+        Login
+      </button>
+    )}
+  </div>
 )
 
-export default Navbar 
+const handSignOut = (props) => {
+  props.clearPeople()
+  props.signout()
+  localStorage.removeItem("jwt")
+  props.history.push("/")
+}
+
+export default connect(null, { signout, clearPeople })(Navbar) 

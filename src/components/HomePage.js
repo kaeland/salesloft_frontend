@@ -1,7 +1,26 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { startSetPeople } from '../redux/actions/people'
 
-const HomePage = (props) => (
-  <h1>Home Page</h1>
-)
+class HomePage extends React.Component {
+  componentDidMount() {
+    if (localStorage.getItem("jwt") !== null) {
+      this.props.startSetPeople()
+    }
+  }
 
-export default HomePage;
+  render() {
+    return (
+      <div>
+        <h1>Home Page</h1>
+        {this.props.people && <p>People data...</p>}
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = ({ people }) => {
+  return { people }
+}
+
+export default connect(mapStateToProps, { startSetPeople })(HomePage);

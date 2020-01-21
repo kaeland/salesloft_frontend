@@ -5,7 +5,10 @@ import { sortEmailByLetterFrequency } from '../utils/utils'
 import Table from './Table'
 
 class HomePage extends React.Component {
-  state = { showFrequency: false }
+  state = { 
+    showFrequency: false,
+    showDuplicates: false 
+  }
 
   componentDidMount() {
     if (localStorage.getItem("jwt") !== null) {

@@ -1,24 +1,18 @@
 import { LOGIN, ERROR, SIGN_OUT } from '../constants'
+import { loginFetch } from '../../utils/routes'
 
 export const login = (user) => ({
-  type: LOGIN, 
-  user 
+  type: LOGIN,
+  user
 })
 
 export const startLogin = (user = {}) => {
   return dispatch => {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        user
-      })
-    }
-    fetch("http://localhost:3000/api/v1/login", options)
+    loginFetch(user)
       .then(res => res.json())
-      .then(data => dispatch(login(data)))
+      .then(data => {
+        localStorage.setItem("jwt", data.jwt)
+        dispatch(login(data))
+      })
   }
 }

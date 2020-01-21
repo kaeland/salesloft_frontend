@@ -11,6 +11,18 @@ const authOptions = (user) => ({
   })
 })
 
+const getOptions = () => ({
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json", 
+    "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+  }
+})
+
 export const loginFetch = (user) => {
   return fetch(`${APP_URL}/login`, authOptions(user))
+}
+
+export const fetchPeople = () => {
+  return fetch(`${APP_URL}/people`, getOptions())
 }

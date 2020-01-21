@@ -15,7 +15,7 @@ export const startLogin = (user = {}, history) => {
   return dispatch => {
     loginFetch(user)
       .then(res => res.json())
-      .then(({ user, jwt = '', message }) => {
+      .then(({ user = {}, jwt = '', message }) => {
         if (message === "success") {
           localStorage.setItem("jwt", jwt)
           dispatch(login(user))

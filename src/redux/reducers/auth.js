@@ -5,7 +5,7 @@ export default function (state = {}, action) {
     case LOGIN:
       return { ...state, ...action.user }
     case ERROR:
-      return { ...state, ...action.message }
+      return { ...state, message: action.message }
     case SIGN_OUT:
       return {}
     default:

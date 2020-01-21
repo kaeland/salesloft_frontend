@@ -16,7 +16,7 @@ class LoginPage extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.startLogin(this.state)
+    this.props.startLogin(this.state, this.props.history)
   }
 
   render() {
@@ -33,4 +33,10 @@ class LoginPage extends React.Component {
   }
 }
 
-export default connect(null, { startLogin })(LoginPage);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    startLogin: (user, history) => dispatch(startLogin(user, history))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LoginPage);

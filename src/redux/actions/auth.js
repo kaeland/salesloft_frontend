@@ -6,13 +6,23 @@ export const login = (user) => ({
   user
 })
 
-export const startLogin = (user = {}) => {
+export const error = (message) => ({
+  type: ERROR,
+  message
+})
+
+export const startLogin = (user = {}, history) => {
   return dispatch => {
     loginFetch(user)
       .then(res => res.json())
-      .then(data => {
-        localStorage.setItem("jwt", data.jwt)
-        dispatch(login(data))
+      .then(({ user, jwt = '', message }) => {
+        if (message === "success") {
+          localStorage.setItem("jwt", jwt)
+          dispatch(login(user))
+          history.push("/")
+        } else {
+          dispatch(error(message))
+        }
       })
   }
 }

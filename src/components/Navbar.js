@@ -22,7 +22,7 @@ class Navbar extends React.Component {
       <div>
         <nav className="navbar is-info" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <Link className="navbar-item is-size-3" to="/">Salesloftify</Link>
+            <Link className="navbar-item is-size-3" to="/">SalesLoftify</Link>
             <a onClick={() => this.setState({ showMenu: !this.state.showMenu })} role="button" className={`navbar-burger burger ${this.state.showMenu && "is-active"}`} aria-label="menu" aria-expanded="false">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>

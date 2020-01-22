@@ -22,7 +22,7 @@ class Navbar extends React.Component {
       <div>
         {localStorage.getItem("jwt") !== null
           ? (
-            <nav className="navbar" role="navigation" aria-label="main navigation">
+            <nav className="navbar is-info" role="navigation" aria-label="main navigation">
               <div className="navbar-brand">
                 <Link className="navbar-item is-size-3" to="/">Salesloftify</Link>
                 <a onClick={() => this.setState({ showMenu: !this.state.showMenu })} role="button" class={`navbar-burger ${this.state.showMenu && "is-active"}`} aria-label="menu" aria-expanded="false">
@@ -34,7 +34,7 @@ class Navbar extends React.Component {
               <div className={`navbar-menu ${this.state.showMenu && "is-active"}`}>
                 <div className="navbar-end">
                   <div className="navbar-item">
-                    <button className="button is-link" onClick={() => this.handleSignOut()}>
+                    <button className="button is-success is-rounded" onClick={() => this.handleSignOut()}>
                       Logout
                     </button>
                   </div>
@@ -42,7 +42,7 @@ class Navbar extends React.Component {
               </div>
             </nav>
           ) : (
-            <nav className="navbar" role="navigation" aria-label="main navigation">
+            <nav className="navbar is-info" role="navigation" aria-label="main navigation">
               <div className="navbar-brand">
                 <Link className="navbar-item is-size-3" to="/">Salesloftify</Link>
                 <a onClick={() => this.setState({ showMenu: !this.state.showMenu })} role="button" class={`navbar-burger ${this.state.showMenu && "is-active"}`} aria-label="menu" aria-expanded="false">
@@ -54,7 +54,7 @@ class Navbar extends React.Component {
               <div className={`navbar-menu ${this.state.showMenu && "is-active"}`}>
                 <div className="navbar-end">
                   <div className="navbar-item">
-                    <button className="button is-link" onClick={() => this.props.history.push("/login")}>
+                    <button className="button is-success is-rounded" onClick={() => this.props.history.push("/login")}>
                       Login
                     </button>
                   </div>

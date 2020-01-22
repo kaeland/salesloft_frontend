@@ -70,7 +70,7 @@ const similarity = (s1, s2) => {
   return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
 }
 
-const comparePeople = (data) => {
+export const comparePeople = (data) => {
   let possibleDuplicates = []
   for(let i = 0; i <= data.length - 1; i++) {
     let matched = []

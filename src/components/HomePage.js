@@ -6,9 +6,10 @@ import Table from './Table'
 import Duplicates from './Duplicates'
 
 class HomePage extends React.Component {
-  state = { 
+  state = {
     showFrequency: false,
-    showDuplicates: false 
+    showDuplicates: false, 
+    title: "See people below..."
   }
 
   componentDidMount() {
@@ -22,13 +23,13 @@ class HomePage extends React.Component {
     return data.map(({ id, first_name, last_name, email_address, title }) => {
       return (
         <li key={id}>
-          {this.state.showFrequency === true 
-            ? this.renderTable(email_address) 
+          {this.state.showFrequency === true
+            ? this.renderTable(email_address)
             : (
               <div className="box">
-                <p>Name: {first_name} {last_name}</p>
-                <p>Title: {title}</p>
-                <p>Email: {email_address}</p>
+                <p> <strong>Name:</strong> {first_name} {last_name}</p>
+                <p><strong>Title:</strong> {title}</p>
+                <p><strong>Email:</strong> {email_address}</p>
               </div>
             )
           }
@@ -43,33 +44,41 @@ class HomePage extends React.Component {
   }
 
   renderDuplicates = (data) => {
-    const duplicates = comparePeople(data) 
+    const duplicates = comparePeople(data)
     return <Duplicates duplicates={duplicates} />
   }
 
   toggleFrequency = () => {
     this.setState({
-      showFrequency: !this.state.showFrequency, 
-      showDuplicates: false 
+      showFrequency: !this.state.showFrequency,
+      showDuplicates: false, 
+      title: !this.state.showFrequency === true ? "Frequency of characters in person's email..." : "See people below..."
     })
   }
 
   toggleDuplicates = () => {
     this.setState({
-      showFrequency: false, 
-      showDuplicates: !this.state.showDuplicates
+      showFrequency: false,
+      showDuplicates: !this.state.showDuplicates, 
+      title: !this.state.showDuplicates === true ? "Possible duplicates below..." : "See people below..."
     })
   }
 
   showPeople = () => {
     this.setState({
       showFrequency: false,
-      showDuplicates: false 
+      showDuplicates: false, 
+      title: "See people below..."
     })
+  }
+
+  renderTitle = (data) => {
+    
   }
 
   render() {
     let data = this.props.people.data
+    let title = data ? this.state.title : "Sign up or Login to see people below..."
     return (
       <div>
         <div className="section">
@@ -86,13 +95,15 @@ class HomePage extends React.Component {
           </div>
         </div>
         <div className="section page-title ">
-          <h2 className="is-size-4">People:</h2>
+          <h2 className="is-size-4">
+            {title}
+          </h2>
         </div>
         <div className="section">
           {data && (
             <ul>
-              {this.state.showDuplicates === true 
-                ? this.renderDuplicates(data) 
+              {this.state.showDuplicates === true
+                ? this.renderDuplicates(data)
                 : this.renderPeople()
               }
             </ul>

@@ -72,24 +72,27 @@ class HomePage extends React.Component {
     let data = this.props.people.data
     return (
       <div>
-        <h1>Home Page</h1>
-        <button onClick={this.showPeople}>
-          Show People
-        </button>
-        <button onClick={this.toggleFrequency}>
-          Toggle Frequency
-        </button>
-        <button onClick={this.toggleDuplicates}>
-          Toggle Duplicates
-        </button>
-        {data && (
-          <ul>
-            {this.state.showDuplicates === true 
-              ? this.renderDuplicates(data) 
-              : this.renderPeople()
-            }
-          </ul>
-        )}
+        <div className="section">
+          <button className="button" onClick={this.showPeople}>
+            Show People
+          </button>
+          <button className="button" onClick={this.toggleFrequency}>
+            Toggle Frequency
+          </button>
+          <button className="button" onClick={this.toggleDuplicates}>
+            Toggle Duplicates
+          </button>
+        </div>
+        <div className="section">
+          {data && (
+            <ul>
+              {this.state.showDuplicates === true 
+                ? this.renderDuplicates(data) 
+                : this.renderPeople()
+              }
+            </ul>
+          )}
+        </div>
       </div>
     )
   }

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import HomePage from './components/HomePage'
 import LoginPage from './components/LoginPage'
 
+
 function App() {
   return (
     <Router>

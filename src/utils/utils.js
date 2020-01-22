@@ -104,6 +104,5 @@ export const comparePeople = (data) => {
     }
   }
   let uniqeDuplicates = unique(possibleDuplicates)
-  debugger
-  // return possibleDuplicates
+  return uniqeDuplicates
 }

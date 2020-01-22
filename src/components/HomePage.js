@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { startSetPeople } from '../redux/actions/people'
 import { sortEmailByLetterFrequency, comparePeople } from '../utils/utils'
 import Table from './Table'
+import Duplicates from './Duplicates'
 
 class HomePage extends React.Component {
   state = { 
@@ -21,8 +22,8 @@ class HomePage extends React.Component {
     return data.map(({ id, first_name, last_name, email_address, title }) => {
       return (
         <li key={id}>
-          {this.state.showFrequency === true ? this.renderTable(email_address) 
-            : this.state.showDuplicates === true ? this.renderDuplicates(data)
+          {this.state.showFrequency === true 
+            ? this.renderTable(email_address) 
             : (
               <div>
                 <p>Name: {first_name} {last_name}</p>
@@ -43,8 +44,7 @@ class HomePage extends React.Component {
 
   renderDuplicates = (data) => {
     const duplicates = comparePeople(data) 
-    // debugger
-    return <p>Duplicates...</p>
+    return <Duplicates duplicates={duplicates} />
   }
 
   toggleFrequency = () => {
@@ -69,6 +69,7 @@ class HomePage extends React.Component {
   }
 
   render() {
+    let data = this.props.people.data
     return (
       <div>
         <h1>Home Page</h1>
@@ -81,9 +82,12 @@ class HomePage extends React.Component {
         <button onClick={this.toggleDuplicates}>
           Toggle Duplicates
         </button>
-        {this.props.people.data && (
+        {data && (
           <ul>
-            {this.renderPeople()}
+            {this.state.showDuplicates === true 
+              ? this.renderDuplicates(data) 
+              : this.renderPeople()
+            }
           </ul>
         )}
       </div>

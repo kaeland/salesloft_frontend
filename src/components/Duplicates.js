@@ -16,8 +16,8 @@ const handleDuplicates = (duplicates) => {
       <div>
         <h2>Possible Duplicate:</h2>
         <p>{firstPerson.first_name} {firstPerson.last_name} has a similar email address to {secondPerson.first_name} {secondPerson.last_name}</p>
-        <p>{firstPerson.first_name} {firstPerson.last_name}'s email address is: {firstPerson.email_address}</p>
-        <p>{secondPerson.first_name} {secondPerson.last_name}'s email address is: {secondPerson.email_address}</p>
+        <p>{firstPerson.first_name} {firstPerson.last_name}'s email address is: <strong>{firstPerson.email_address}</strong></p>
+        <p>{secondPerson.first_name} {secondPerson.last_name}'s email address is: <strong>{secondPerson.email_address}</strong></p>
       </div>
     )
   })

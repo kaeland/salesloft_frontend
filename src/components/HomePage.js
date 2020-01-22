@@ -85,6 +85,9 @@ class HomePage extends React.Component {
             </button>
           </div>
         </div>
+        <div className="section page-title ">
+          <h2 className="is-size-4">People:</h2>
+        </div>
         <div className="section">
           {data && (
             <ul>

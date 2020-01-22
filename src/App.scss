@@ -24,6 +24,7 @@ $family-sans-serif: 'Nunito', sans-serif;
 // $control-border-width: 2px;
 // $input-border-color: transparent;
 // $input-shadow: none;
+$section-padding: 2.5rem 1.5rem;
 
 // Import only what you need from Bulma
 // @import '../node_modules/bulma/sass/utilities/_all.sass';
@@ -42,3 +43,6 @@ $family-sans-serif: 'Nunito', sans-serif;
   margin-bottom: 15px;
 }
 
+.section.page-title {
+  padding: 1rem 1.5rem;
+}

@@ -11,7 +11,7 @@ const Table = (props) => {
   })
   return (
     <div className="box">
-      <table class="table">
+      <table className="table is-bordered is-striped is-fullwidth">
         <thead>
           <tr>
             <th>Character</th>

@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { startLogin } from '../redux/actions/auth'
+import { startSignup } from '../redux/actions/auth'
 import Form from './Form'
 
-class LoginPage extends React.Component {
+class SignupPage extends React.Component {
   state = {
     username: '',
-    password: ''
+    password: '',
+    bio: ''
   }
 
   handleChange = (e) => {
@@ -17,7 +18,7 @@ class LoginPage extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.startLogin(this.state, this.props.history)
+    this.props.startSignup(this.state, this.props.history)
   }
 
   render() {
@@ -29,15 +30,24 @@ class LoginPage extends React.Component {
             <input type="text" className="input" name="username" onChange={this.handleChange} />
           </div>
         </div>
+
         <div className="field">
           <label className="label">Password</label>
           <div className="control">
             <input type="password" className="input" name="password" onChange={this.handleChange} />
           </div>
         </div>
+
+        <div className="field">
+          <label className="label">Bio</label>
+          <div className="control">
+            <textarea className="textarea" name="bio" onChange={this.handleChange}></textarea>
+          </div>
+        </div>
+
         <div className="field">
           <div className="control">
-            <input className="button is-link" type="submit" value="Login" />
+            <input className="button is-link" type="submit" value="Sign up" />
           </div>
         </div>
       </Form>
@@ -47,8 +57,8 @@ class LoginPage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    startLogin: (user, history) => dispatch(startLogin(user, history))
+    startSignup: (user, history) => dispatch(startSignup(user, history))
   }
 }
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(null, mapDispatchToProps)(SignupPage);

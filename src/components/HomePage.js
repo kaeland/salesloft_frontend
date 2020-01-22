@@ -74,10 +74,10 @@ class HomePage extends React.Component {
       <div>
         <div className="section">
           <div className="buttons">
-            <button className="button is-primary" onClick={this.showPeople}>
+            <button className="button is-primary is-outlined" onClick={this.showPeople}>
               Show People
             </button>
-            <button className="button is-info" onClick={this.toggleFrequency}>
+            <button className="button is-info is-outlined" onClick={this.toggleFrequency}>
               Toggle Frequency
             </button>
             <button className="button is-info is-outlined" onClick={this.toggleDuplicates}>

@@ -19,6 +19,10 @@ const getOptions = () => ({
   }
 })
 
+export const signupFetch = (user) => {
+  return fetch(`${APP_URL}/users`, authOptions(user))
+}
+
 export const loginFetch = (user) => {
   return fetch(`${APP_URL}/login`, authOptions(user))
 }

@@ -10,17 +10,19 @@ const Table = (props) => {
     )
   })
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Character</th>
-          <th>Count</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows}
-      </tbody>
-    </table>
+    <div className="box">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
+    </div>
   )
 }
 

@@ -10,7 +10,7 @@ const Navbar = (props) => (
       ? (
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <Link className="navbar-item" to="/">Salesloftify</Link>
+            <Link className="navbar-item is-size-3" to="/">Salesloftify</Link>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
@@ -30,7 +30,7 @@ const Navbar = (props) => (
       ) : (
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <Link className="navbar-item" to="/">Salesloftify</Link>
+            <Link className="navbar-item is-size-3" to="/">Salesloftify</Link>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>

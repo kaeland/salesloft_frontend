@@ -25,7 +25,7 @@ class HomePage extends React.Component {
           {this.state.showFrequency === true 
             ? this.renderTable(email_address) 
             : (
-              <div>
+              <div className="box">
                 <p>Name: {first_name} {last_name}</p>
                 <p>Title: {title}</p>
                 <p>Email: {email_address}</p>
@@ -73,15 +73,17 @@ class HomePage extends React.Component {
     return (
       <div>
         <div className="section">
-          <button className="button" onClick={this.showPeople}>
-            Show People
-          </button>
-          <button className="button" onClick={this.toggleFrequency}>
-            Toggle Frequency
-          </button>
-          <button className="button" onClick={this.toggleDuplicates}>
-            Toggle Duplicates
-          </button>
+          <div className="buttons">
+            <button className="button is-primary" onClick={this.showPeople}>
+              Show People
+            </button>
+            <button className="button is-info" onClick={this.toggleFrequency}>
+              Toggle Frequency
+            </button>
+            <button className="button is-info is-outlined" onClick={this.toggleDuplicates}>
+              Toggle Duplicates
+            </button>
+          </div>
         </div>
         <div className="section">
           {data && (

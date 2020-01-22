@@ -23,7 +23,7 @@ class SignupPage extends React.Component {
 
   render() {
     return (
-      <Form pageTitle={"Login Below:"} handleSubmit={this.handleSubmit}>
+      <Form pageTitle={"Sign Up Below:"} handleSubmit={this.handleSubmit}>
         <div className="field">
           <label className="label">Username</label>
           <div className="control">

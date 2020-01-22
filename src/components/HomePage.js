@@ -80,7 +80,7 @@ class HomePage extends React.Component {
     let data = this.props.people.data
     let title = data ? this.state.title : "Sign up or Login to see people below..."
     return (
-      <div>
+      <div className="container">
         <div className="section">
           <div className="buttons">
             <button className="button is-primary is-outlined" onClick={this.showPeople}>

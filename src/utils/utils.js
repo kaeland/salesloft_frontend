@@ -20,7 +20,7 @@ const mapEmailHashToArray = (email) => {
 
 export const sortEmailByLetterFrequency = (email) => {
   const sortable = mapEmailHashToArray(email)
-  return sortable.sort(function(a, b) {
+  return sortable.sort(function (a, b) {
     return b[1] - a[1];
   });
 }
@@ -70,24 +70,40 @@ const similarity = (s1, s2) => {
   return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
 }
 
+const unique = (duplicates) => {
+  const ids = new Set();
+  const uniqeDuplicates = duplicates.filter(duplicate => {
+    if (ids.has(duplicate[0].id) || ids.has(duplicate[1].id)) {
+      return false;
+    }
+    ids.add(duplicate[0].id);
+    ids.add(duplicate[1].id);
+    return true;
+  });
+  return uniqeDuplicates
+}
+
 export const comparePeople = (data) => {
   let possibleDuplicates = []
-  for(let i = 0; i <= data.length - 1; i++) {
+  for (let i = 0; i <= data.length - 1; i++) {
     let matched = []
-    for(let j = 0; j <= data.length - 1; j++) {
-      if(i === j) { continue }
+    for (let j = 0; j <= data.length - 1; j++) {
+      if (i === j) { continue }
       let firstPersonEmail = data[i].email_address
       let secondPersonEmail = data[j].email_address
       let percentage = similarity(firstPersonEmail, secondPersonEmail)
-      if(percentage >= 0.95) {
+      if (percentage >= 0.93) {
         matched.push(data[j])
       }
     }
-    if(matched.length === 0) {
+    if (matched.length === 0) {
       continue
     } else {
       matched.push(data[i])
       possibleDuplicates.push(matched)
     }
   }
+  let uniqeDuplicates = unique(possibleDuplicates)
+  debugger
+  // return possibleDuplicates
 }

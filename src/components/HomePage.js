@@ -18,9 +18,9 @@ class HomePage extends React.Component {
 
   renderPeople = () => {
     let { data } = this.props.people
-    return data.map(({ first_name, last_name, email_address, title }) => {
+    return data.map(({ id, first_name, last_name, email_address, title }) => {
       return (
-        <li>
+        <li key={id}>
           {this.state.showFrequency === true ? this.renderTable(email_address) 
             : this.state.showDuplicates === true ? this.renderDuplicates(data)
             : (
@@ -43,6 +43,7 @@ class HomePage extends React.Component {
 
   renderDuplicates = (data) => {
     const duplicates = comparePeople(data) 
+    // debugger
     return <p>Duplicates...</p>
   }
 

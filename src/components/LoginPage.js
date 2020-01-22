@@ -21,12 +21,26 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="section">
         <h1>Login Below:</h1>
-        <form onSubmit={this.handleSubmit}> 
-          <input type="text" name="username" onChange={this.handleChange} />
-          <input type="text" name="password" onChange={this.handleChange} />
-          <input type="submit" value="Login"/>
+        <form className="box" onSubmit={this.handleSubmit}> 
+          <div className="field">
+            <label className="label">Username</label>
+            <div className="control">
+              <input type="text" className="input" name="username" onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control">
+              <input type="password" className="input" name="password" onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="field">
+            <div className="control">
+              <input className="button" type="submit" value="Login"/>
+            </div>
+          </div>
         </form>
       </div>
     )

@@ -1,4 +1,4 @@
-const mapEmailToHash = (email) => {
+export const mapEmailToHash = (email) => {
   let hash = {}
   for (const letter of email) {
     if (hash[letter] === undefined) {
@@ -9,7 +9,7 @@ const mapEmailToHash = (email) => {
   return hash
 }
 
-const mapEmailHashToArray = (email) => {
+export const mapEmailHashToArray = (email) => {
   const hash = mapEmailToHash(email)
   let sortable = []
   for (const letter in hash) {
@@ -29,7 +29,7 @@ export const sortEmailByLetterFrequency = (email) => {
 // https://stackoverflow.com/questions/10473745/compare-strings-javascript-return-of-likely
 // Levenshtein distance https://en.wikipedia.org/wiki/Levenshtein_distance
 
-const editDistance = (s1, s2) => {
+export const editDistance = (s1, s2) => {
   s1 = s1.toLowerCase();
   s2 = s2.toLowerCase();
 
@@ -56,7 +56,7 @@ const editDistance = (s1, s2) => {
   return costs[s2.length];
 }
 
-const similarity = (s1, s2) => {
+export const similarity = (s1, s2) => {
   var longer = s1;
   var shorter = s2;
   if (s1.length < s2.length) {
@@ -70,7 +70,7 @@ const similarity = (s1, s2) => {
   return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
 }
 
-const unique = (duplicates) => {
+export const unique = (duplicates) => {
   const ids = new Set();
   const uniqeDuplicates = duplicates.filter(duplicate => {
     if (ids.has(duplicate[0].id) || ids.has(duplicate[1].id)) {

@@ -2,8 +2,8 @@ import {
   mapEmailToHash,
   mapEmailHashToArray,
   sortEmailByLetterFrequency,
-  editDistance, 
-  similarity, 
+  editDistance,
+  similarity,
   unique,
   comparePeople
 } from '../../utils/utils'
@@ -11,9 +11,9 @@ import {
   peopleData,
   exampleEmail,
   arrayOfSimilarEmails,
-  parsedEmail, 
+  parsedEmail,
   parsedEmailToArray
-} from '../fixtures/peopleData' 
+} from '../fixtures/peopleData'
 
 describe('mapEmailToHash', () => {
   it('should map an email to an object', () => {
@@ -49,13 +49,13 @@ describe('similarity', () => {
     let percentage = similarity(arrayOfSimilarEmails[0], arrayOfSimilarEmails[1])
     expect(typeof percentage).toBe('number')
   })
-  
+
   it('should return a number less than 1, but greater than 0', () => {
     let percentage = similarity(arrayOfSimilarEmails[0], arrayOfSimilarEmails[1])
     expect(percentage).toBeLessThan(1)
     expect(percentage).toBeGreaterThan(0)
   })
-  
+
   it('should return a reasonably high similarity percentage for similar strings', () => {
     let percentage = similarity(arrayOfSimilarEmails[0], arrayOfSimilarEmails[1])
     expect(percentage).toBeCloseTo(0.95, 1)
@@ -64,5 +64,26 @@ describe('similarity', () => {
   it('should return a reasonably low similarity percentage for dissimilar strings', () => {
     let percentage = similarity('michael.jackson@example.com', 'jill.scott@music.com')
     expect(percentage).toBeLessThan(0.85)
+  })
+})
+
+describe('comparePeople', () => {
+  it('should be called with an array of objects', () => {
+    const data = peopleData.people.data
+    const fn = jest.fn(comparePeople)
+    fn(data)
+    expect(fn)
+      .toHaveBeenCalledWith(
+        expect.arrayContaining(
+          [expect.objectContaining({ id: expect.any(Number) })]
+        )
+      )
+  })
+
+  it('should return an array of arrays', () => {
+    const data = peopleData.people.data
+    const fn = jest.fn(comparePeople)
+    fn(data)
+    expect(fn).toHaveReturnedWith(expect.arrayContaining([], []))
   })
 })
